@@ -1,0 +1,49 @@
+<% provide(:title, "タスク詳細画面") %>
+<table class="table table-bordered table-cu">
+  <tr>
+    <th class="th">タスク名:</th>
+    <td class="td"><%= @task.name %></td>
+  </tr>
+  <tr>
+    <th>タスク本文:</th>
+    <td><%= @task.body %></td>
+  </tr>
+  <tr>
+    <th>カテゴリー:</th>
+    <td>
+      <% @task.categories.each do |f| %>
+        <%= p f.name %>
+      <% end %>    
+    </td>
+  </tr>
+  <tr>
+    <th>優先順位:</th>
+    <td><%= @task.priority_i18n %></td>
+  </tr>
+  <tr>
+    <th>タスク状態:</th>
+    <td><%= @task.status_i18n %></td>
+  </tr>
+  <tr>
+    <th>終了期限:</th>
+    <td>
+      <% if @task.ended_at.present? %>
+        <%= l @task.ended_at %>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <th>作成日時:</th>
+    <td><%= l @task.created_at %></td>
+  </tr>
+  <tr>
+    <th>更新日時:</th>
+    <td><%= l @task.updated_at %></td>
+  </tr>
+</table>
+<%= link_to "削除", task_path(@task.id), class: 'btn btn-danger', method: :delete, data: { confirm: "削除してもよろしいでしょうか？" } %>
+<%= link_to "編集", edit_task_path(@task.id), class: 'btn btn-primary' %>
+<button id='js' class='btn btn-success'>モーダル編集</button>
+<%= render "shared/modal" %>
+<%= javascript_pack_tag "application" %>
+

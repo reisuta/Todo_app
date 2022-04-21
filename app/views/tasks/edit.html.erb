@@ -1,0 +1,19 @@
+<%= provide(:title,"タスク編集画面") %>
+<%= form_with(model: @task, local: true) do |f| %>
+  <%= render "shared/error_messages", model: @task %>
+  <%= f.label :name, 'タスク名', class: 'form-label background-color' %>
+  <%= f.text_field :name, value: @task.name, class: 'form-control less-length mar-bottom' %>
+  <%= f.label :body, 'タスク本文', class: 'form-label background-color' %>
+  <%= f.text_area :body, value: @task.body, class: 'form-control less-length mar-bottom' %>
+  <%= f.collection_check_boxes(:category_ids, @categories, :id, :name) do |category| %>
+    <%= category.check_box %>
+    <%= category.text %>
+  <% end %>
+  <%= f.label :ended_at, '終了期限', class: 'form-style' %>
+  <%= f.datetime_field :ended_at %>
+  <%= f.label :status, 'タスク状態', class: 'form-style' %>
+  <%= f.select :status, Task.statuses.keys.map {|k| [t("enums.task.status.#{k}"), k]} %>
+  <%= f.label :priority, '優先順位', class: 'form-style' %>
+  <%= f.select :priority, Task.priorities.keys.map {|k| [t("enums.task.priority.#{k}"), k]} %>
+  <%= f.submit "更新", class: 'btn btn-primary' %>
+<% end %>

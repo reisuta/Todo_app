@@ -1,0 +1,109 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+
+th {
+  background-color: skyblue;
+  color: white;
+  a{
+    color: white
+  }
+}
+
+.textWhite{
+  color: white
+}
+.table-cu{
+  width: 40%;
+}
+
+.th{
+  width: 110px;
+}
+
+.td{
+  width: fit-content;
+
+}
+
+.form-style{
+  margin-top: 10px;
+  margin-bottom: 0;
+  width: 100%;
+}
+
+.priority-style{
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+.update-style{
+  margin-top: 100px;
+}
+
+.background-color{
+  background-color: gainsboro;
+  color: white;
+  border-radius: 10%;
+  
+}
+
+.less-length{
+  width:  50%;
+}
+
+.mar-bottom {
+  margin-bottom: 20px;
+}
+
+
+.mar {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+
+.searchForm{
+  margin-bottom: 35px;
+}
+
+.errorStyle{
+ list-style: none;
+ font-size: 16px;
+ margin-bottom: 10px;
+ color: red; 
+}
+
+#outer-frame {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  transition: .4s;
+  background-color: rgba(0,0,0,0.5);
+}
+
+
+#modal{
+  position: absolute;
+  left:50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+
+  .close{
+  background-color: white;
+  border-radius: 5px;
+  color: red;
+  }
+
+}
+
+

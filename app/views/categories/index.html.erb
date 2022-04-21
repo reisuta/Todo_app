@@ -1,0 +1,23 @@
+<% provide(:title, "カテゴリー一覧画面") %>
+
+<%= search_form_for @q, class: 'mb-5', url: categories_path do |f| %>
+  <%= f.label :name_cont, 'カテゴリー名', class: 'form-label background-color' %>
+  <%= f.search_field :name_cont, class: 'form-control less-length' %>
+  <br/>
+  <br/>
+  <%= f.submit "クリア", type: :reset, class: 'btn btn-light' %>
+  <%= f.submit '検索', class: 'btn btn-primary' %>
+<% end %>
+<br>
+<table class="table table-bordered table-cu">
+  <tr>
+    <th class="textWhite">カテゴリー名</th>
+    <th class="textWhite">詳細へ</th>
+  </tr>
+  <% @categories.each do |category| %>
+    <tr>
+      <td class="th"><%= category.name %></td>
+      <td class="td"><%= link_to '詳細',category_path(category) %></td>
+    </tr>
+  <% end %>
+</table>

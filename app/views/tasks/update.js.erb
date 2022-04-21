@@ -1,0 +1,6 @@
+$('.js-message-errors').replaceWith(
+  "<%= j(
+    render 'shared/error_messages',
+    model: @task
+  ) %>"
+);

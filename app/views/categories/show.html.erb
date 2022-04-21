@@ -1,0 +1,11 @@
+<% provide(:title, "カテゴリー詳細画面") %>
+<table class='table table-bordered table-cu'>
+  <tr>
+    <th class="th">カテゴリー名:</th>
+    <td class="td"><%= @category.name %></td>
+  </tr>
+  <br/>
+  <br/>
+</table>
+<%= link_to "削除", category_path(@category.id), class: 'btn btn-danger', method: :delete, data: { confirm: "削除してもよろしいでしょうか？" } %>
+<%= link_to "編集", edit_category_path(@category.id), class: 'btn btn-primary' %>

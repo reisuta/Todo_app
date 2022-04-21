@@ -1,0 +1,25 @@
+ja:
+  time:
+    formats:
+      default: "%Y年%m月%d日 (%a) %H:%M:%S"
+  enums:
+    task:
+      priority:
+        unset: 未設定
+        top: 高
+        middle: 中
+        bottom: 低
+      status:
+        waiting: 未着手
+        doing: 着手
+        done: 完了
+  activerecord:
+    attributes:
+      task:
+        name: タスク名
+        body: 本文
+        priority: 優先順位
+        ended_at: 終了期限
+        status: タスク状態
+      category:
+        name: カテゴリー名

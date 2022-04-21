@@ -1,0 +1,49 @@
+<% provide(:title, "ホーム画面") %>
+<%= search_form_for @q, class: 'row g-3', url: tasks_path do |f| %>
+  <div class='col-md-4 mar-bottom'>
+  <%= f.label :name_cont, 'タスク名', class: 'form-label background-color' %>
+  <%= f.search_field :name_cont, class: 'form-control' %>
+  </div>
+  <div class='col-md-6 mar-bottom'>
+  <%= f.label :body_cont, 'タスク本文', class: 'form-label background-color' %>
+  <%= f.search_field :body_cont, class: 'form-control' %>
+  </div>
+  <div class='col-md-4 mar'>
+  <%= f.label :categories_name_eq, 'カテゴリー', class: 'form-label background-color' %>
+  <%= f.collection_select(:categories_name_eq, @categories, :name, :name, include_hidden: false, include_blank: true) %>
+  </div>
+  <div class='col-md-4 mar'>
+  <%= f.label :ended_at_cont, '終了期限', class: 'background-color' %>
+  <%= f.datetime_field :ended_at_gteq %> ~
+  <%= f.datetime_field :ended_at_lteq %>
+  </div>
+  <div class='col-md-12 searchForm'>
+  <%= f.submit "クリア", type: :reset, class: 'btn btn-light' %>
+  <%= f.submit '検索', class: 'btn btn-primary' %>
+  </div>
+<% end %>
+<br>
+<table class="table table-bordered">
+  <tr>
+    <th><%= sort_link(@q, :name, 'タイトル') %></th>
+    <th><%= sort_link(@q, :ended_at, '終了期限') %></th>
+    <th><%= sort_link(@q, :priority, '優先順位') %></th>
+    <th><%= sort_link(@q, :status, 'タスク状態') %></th>
+    <th class='textWhite'>詳細へ</th>
+  </tr>
+  
+  <% @tasks.each do |task| %>
+      <tr>
+        <td><%= task.name %></td>
+        <td>
+          <% if task.ended_at.present? %>
+            <%= l task.ended_at %>
+          <% end %>
+        </td>
+        <td><%= task.priority_i18n %></td>
+        <td><%= task.status_i18n %></td>
+        <td><%= link_to '詳細',task_path(task) %></td>
+      </tr>
+  <% end %>
+</table>
+<%= paginate @tasks %>
