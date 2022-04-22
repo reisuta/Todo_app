@@ -10,33 +10,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_06_015801) do
+ActiveRecord::Schema.define(version: 2022_04_22_123711) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "categories", force: :cascade do |t|
+  create_table "categories", comment: "カテゴリー", force: :cascade do |t|
     t.string "name", null: false, comment: "カテゴリー名"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "tasks", force: :cascade do |t|
+  create_table "tasks", comment: "タスク", force: :cascade do |t|
     t.string "name", null: false, comment: "タスク名"
     t.text "body", null: false, comment: "タスク本文"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "priority", default: 0, null: false
-    t.datetime "ended_at"
-    t.integer "status", default: 0, null: false
+    t.integer "priority", default: 0, null: false, comment: "優先順位"
+    t.datetime "ended_at", comment: "終了期限"
+    t.integer "status", default: 0, null: false, comment: "タスク状態"
   end
 
-  create_table "tasks_categories", force: :cascade do |t|
+  create_table "tasks_categories", comment: "タスクカテゴリー", force: :cascade do |t|
     t.bigint "task_id", null: false
     t.bigint "category_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["category_id"], name: "index_tasks_categories_on_category_id"
     t.index ["task_id"], name: "index_tasks_categories_on_task_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   add_foreign_key "tasks_categories", "categories"
