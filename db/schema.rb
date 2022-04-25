@@ -10,32 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_22_232731) do
-
+ActiveRecord::Schema[7.0].define(version: 2022_04_25_041416) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "categories", force: :cascade do |t|
     t.string "name", null: false, comment: "カテゴリー名"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "tasks", force: :cascade do |t|
     t.string "name", null: false, comment: "タスク名"
     t.text "body", null: false, comment: "タスク本文"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer "priority", default: 0, null: false
-    t.datetime "ended_at"
+    t.datetime "ended_at", precision: nil
     t.integer "status", default: 0, null: false
   end
 
   create_table "tasks_categories", force: :cascade do |t|
     t.bigint "task_id", null: false
     t.bigint "category_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_tasks_categories_on_category_id"
     t.index ["task_id"], name: "index_tasks_categories_on_task_id"
   end
@@ -43,9 +42,10 @@ ActiveRecord::Schema.define(version: 2022_04_22_232731) do
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "password_digest"
+    t.string "remember_digest"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
