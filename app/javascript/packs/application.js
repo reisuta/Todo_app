@@ -13,6 +13,7 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
-//= require jquery
+require("jquery")
+import "bootstrap"
 //= require jquery.turbolinks
 //= require bootstrap-sprockets

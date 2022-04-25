@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.1'
 
-gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
+gem 'rails', '~> 7.0.0'
 gem 'puma', '~> 5.0'
 gem 'sass-rails', '>= 6'
 gem 'webpacker'
@@ -15,7 +15,7 @@ gem 'pry-rails', '~> 0.3.9'
 #
 # gem 'image_processing', '~> 1.2'
 
-gem 'rails-i18n', '~> 6.0'
+gem 'rails-i18n', '~> 7.0'
 gem 'enum_help', '~> 0.0.17'
 gem 'ransack', '~> 2.4', '>= 2.4.2'
 gem 'capybara', '~> 3.36'
