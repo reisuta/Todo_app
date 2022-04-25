@@ -6,7 +6,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application' %>
   </head>
   <body>
     <% flash.each do |message_type, message| %>
@@ -14,18 +14,17 @@
         <%= message %>
       </div>
     <% end %>
-    <nav class="navbar navbar-default">
-      <div class="container-fluid">
-        <div class="navbar-brand">
+    <header class="navbar">
+      <div class="container">
+        <ul class="nav navbar-nav navbar-right">
           <%= render 'shared/header' %>
-        </div>
+        </ul>
       </div>
-    </nav>
-   <div class="container-fluid">
-     <%= yield %>
-   </div>
-   <div class="container">
-     <%= debug(params) if Rails.env.development? %>
-   </div>
+      <div class="container-fluid">
+        <%= yield %>
+      </div>
+      <div class="container">
+        <%= debug(params) if Rails.env.development? %>
+      </div>
   </body>
 </html>
